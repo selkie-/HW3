@@ -8,7 +8,7 @@ print s
 
 500500
 
-︠
+
 %cython
 from math import *
 def f(s):
