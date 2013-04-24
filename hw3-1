@@ -1,0 +1,44 @@
+
+%python
+
+from math import *
+
+def f(n):
+
+    return sin(n^20)
+
+print f(3)
+
+-0.846220404175
+
+
+ 
+
+%timeit f(3)
+
+625 loops, best of 3: 4.21 µs per loop
+
+
+#==========================================
+
+%cython
+
+from math import *
+
+def f(int n):
+
+    return sin(n^20)
+
+print f(3)
+
+-0.846220404175
+/home2/c8c67e80/.sage/temp/u/32447/spyx/_home2_c8c67e80__sage_temp_u_32447_dir_WyQ6Br_a_pyx/_home2_c8c67e80__sage_temp_u_32447_dir_WyQ6Br_a_pyx_0.html (this temporary link expires in a minute)
+Show auto-generated code >>
+
+
+timeit ("f(3)")
+
+625 loops, best of 3: 464 ns per loop
+
+ 
+
