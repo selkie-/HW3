@@ -1,4 +1,3 @@
-
  Search
  Settings
 hw2.sagews 
@@ -8,45 +7,45 @@ hw
 hw2.sagews 
                     Save  hw2.sagews
 
-1
-2
+
+
 %cython
-3
+
 from math import *
-4
+
 def f(int n):
-5
+
     return sin(n^20)
-6
+
 print f(3)
-7
+
 -0.846220404175
 /home2/c8c67e80/.sage/temp/u/32447/spyx/_home2_c8c67e80__sage_temp_u_32447_dir_WyQ6Br_a_pyx/_home2_c8c67e80__sage_temp_u_32447_dir_WyQ6Br_a_pyx_0.html (this temporary link expires in a minute)
 Show auto-generated code >>
-8
-9
+
+
 timeit ("f(3)")
-10
+
 625 loops, best of 3: 464 ns per loop
-11
+
  
-12
-13
+
+
 %python
-14
+
 from math import *
-15
+
 def f(n):
-16
+
     return sin(n^20)
-17
+
 print f(3)
-18
+
 -0.846220404175
-19
-20
+
+
  
-21
+
 %timeit f(3)
-22
+
 625 loops, best of 3: 4.21 µs per loop
