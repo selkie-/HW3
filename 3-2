@@ -16,3 +16,5 @@ def f(s):
         s+= i^2
     return s
 timeit("f(0)")
+
+625 loops, best of 3: 691 µs per loo
