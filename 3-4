@@ -1,0 +1,34 @@
+
+
+def fdet():
+  A =   [[1.1,2.2,3.3,4.4],[1.1,2.2,3.3,4.4],[1.1,2.2,3.3,4.4],[1.1,2.2,3.3,4.4]]
+
+
+	return detm(A,len(A))
+
+def detm(A,n):
+	det = 0;a=0;b=0;c=0;i=0;j=0
+	temp=[[0 for j in range(len(A[0]))] for i in range(len(A))]
+	if n == 1:
+		return A[0][0]
+	elif  n == 2:
+		return A[0][0]*A[1][1] - A[0][1]*A[1][0]
+	else:
+		for a in range(0, n):
+			b = 0
+			c = 0
+			for i in range(1, n):
+				for j in range(0, n):
+					if j==a:
+						continue
+					temp[b][c] = A[i][j]
+					c+=1
+					if c ==(n-1):
+						b+=1
+						c=0
+			det= det + A[0][a] * (-1)**a * detm(temp, n-1)
+
+		return det
+
+%timeit det
+# 625 loops, best of 3: 33.6 ns per loop
