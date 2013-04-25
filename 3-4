@@ -1,7 +1,6 @@
 
-
 def fdet():
-  A =   [[1.1,2.2,3.3,4.4],[1.1,2.2,3.3,4.4],[1.1,2.2,3.3,4.4],[1.1,2.2,3.3,4.4]]
+  A =   [[1.1,2.2,3.3,4.4],[9.1,5.2,8.3,2.4],[8.1,7.2,7.3,4.4],[5.1,9.2,3.1,4.3]]
 
 
 	return detm(A,len(A))
@@ -32,3 +31,39 @@ def detm(A,n):
 
 %timeit det
 # 625 loops, best of 3: 33.6 ns per loop
+
+
+%cython
+cdef  fdet(list A):
+    cdef float val = ffdet(A)
+    return round(val, 2)
+
+cdef ffdet(list A):
+    cdef int n=len(A)
+    if (n>2):
+        i=1
+        j=0
+        sum=0
+        while j<=n-1:
+            d={}
+            e=1
+            while e<=n-1:
+                m=0
+                d[e]=[]
+                while m<=n-1:
+                    if (m==j):
+                        u=0
+                    else:
+                        d[e].append(A[e][m])
+                    m+=1
+                e+=1
+            A1=[d[x] for x in d]
+            sum=sum+i*(A[0][j])*(ffdet(A1))
+            i=i*(-1)
+            j+=1
+        return sum
+    else:
+        return (A[0][0]*A[1][1]-A[0][1]*A[1][0])
+
+A = [[1.1,2.2,3.3,4.4],[9.1,5.2,8.3,2.4],[8.1,7.2,7.3,4.4],[5.1,9.2,3.1,4.3]]
+%timeit fdet(A)
