@@ -1,0 +1,41 @@
+
+def fmul(A,B):
+A = [[11,12,13,14],[15,16,17,18],[19,20,21,22],[23,24,25,26]]
+B = [[27,28,29,30],[31,32,33,34],[35,36,37,38],[39,40,41,42]]
+
+    C = [[0 for k in range(4)] for j in range(4)]
+    s = 0
+    for k in range(4):
+        for j in range(4):
+            for i in range(4):
+                s+=A[j][i]*B[i][k]
+                C[j][k]=s
+            s = 0
+    return C
+
+
+%timeit fmul(A,B)
+#625 loops, best of 3: 46.3 µs per loop
+
+#=============================================
+
+%cython
+
+cdef fmul(A,B):
+A = [[11,12,13,14],[15,16,17,18],[19,20,21,22],[23,24,25,26]]
+B = [[27,28,29,30],[31,32,33,34],[35,36,37,38],[39,40,41,42]]
+
+    C = [[0 for k in range(4)] for j in range(4)]
+    s = 0
+    for k in range(4):
+        for j in range(4):
+            for i in range(4):
+                s+=A[j][i]*B[i][k]
+                C[j][k]=s
+            s = 0
+    return C
+
+
+%timeit fmul(A,B)
+
+#625 loops, best of 3: 254 µs per loop
